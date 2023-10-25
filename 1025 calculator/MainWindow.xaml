@@ -1,0 +1,47 @@
+﻿<Window x:Class="_1025_calculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_1025_calculator"
+        mc:Ignorable="d"
+        Title="Calculator" Height="500" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="68*"/>
+            <RowDefinition Height="127*"/>
+            <RowDefinition Height="97*"/>
+            <RowDefinition Height="97*"/>
+            <RowDefinition Height="97*"/>
+            <RowDefinition Height="97*"/>
+            <RowDefinition Height="97*"/>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="textBoxPrevResult" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Margin="5" IsReadOnly="True"/>
+        <TextBox x:Name="textBoxResult" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Margin="5" IsReadOnly="True"/>
+        <Button Grid.Row="2" Grid.Column="0" Margin="5" Content="CE" Click="buttonCE_Click"/>
+        <Button Grid.Row="3" Grid.Column="0" Margin="5" Content="7" Click="button7_Click"/>
+        <Button Grid.Row="4" Grid.Column="0" Margin="5" Content="4" Click="button4_Click"/>
+        <Button Grid.Row="5" Grid.Column="0" Margin="5" Content="1" Click="button1_Click"/>
+        <Button Grid.Row="6" Grid.Column="0" Margin="5" Content="." Click="buttonComma_Click"/>
+        <Button Grid.Row="2" Grid.Column="1" Margin="5" Content="C" Click="buttonC_Click"/>
+        <Button Grid.Row="3" Grid.Column="1" Margin="5" Content="8" Click="button8_Click"/>
+        <Button Grid.Row="4" Grid.Column="1" Margin="5" Content="5" Click="button5_Click"/>
+        <Button Grid.Row="5" Grid.Column="1" Margin="5" Content="2" Click="button2_Click"/>
+        <Button Grid.Row="6" Grid.Column="1" Margin="5" Content="0" Click="button0_Click"/>
+        <Button Grid.Row="2" Grid.Column="2" Margin="5" Content="^" Click="buttonXmultbyX_Click"/>
+        <Button Grid.Row="3" Grid.Column="2" Margin="5" Content="9" Click="button9_Click"/>
+        <Button Grid.Row="4" Grid.Column="2" Margin="5" Content="6" Click="button6_Click"/>
+        <Button Grid.Row="5" Grid.Column="2" Margin="5" Content="3" Click="button3_Click"/>
+        <Button Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" Margin="5" Content="=" Click="buttonResult_Click"/>
+        <Button Grid.Row="2" Grid.Column="3" Margin="5" Content="/" Click="buttonDiv_Click"/>
+        <Button Grid.Row="3" Grid.Column="3" Margin="5" Content="*" Click="buttonMult_Click"/>
+        <Button Grid.Row="4" Grid.Column="3" Margin="5" Content="-" Click="buttonMinus_Click"/>
+        <Button Grid.Row="5" Grid.Column="3" Margin="5" Content="+" Click="buttonPlus_Click"/>
+    </Grid>
+</Window>
