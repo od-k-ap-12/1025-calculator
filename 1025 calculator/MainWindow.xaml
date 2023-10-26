@@ -34,7 +34,7 @@
         <Button Grid.Row="4" Grid.Column="1" Margin="5" Content="5" Click="button5_Click"/>
         <Button Grid.Row="5" Grid.Column="1" Margin="5" Content="2" Click="button2_Click"/>
         <Button Grid.Row="6" Grid.Column="1" Margin="5" Content="0" Click="button0_Click"/>
-        <Button Grid.Row="2" Grid.Column="2" Margin="5" Content="^" Click="buttonXmultbyX_Click"/>
+        <Button Grid.Row="2" Grid.Column="2" Margin="5" Content=" \-" Click="buttonArrow_Click"/>
         <Button Grid.Row="3" Grid.Column="2" Margin="5" Content="9" Click="button9_Click"/>
         <Button Grid.Row="4" Grid.Column="2" Margin="5" Content="6" Click="button6_Click"/>
         <Button Grid.Row="5" Grid.Column="2" Margin="5" Content="3" Click="button3_Click"/>

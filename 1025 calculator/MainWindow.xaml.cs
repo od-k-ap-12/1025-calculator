@@ -121,7 +121,7 @@ namespace _1025_calculator
 
         private void buttonResult_Click(object sender, EventArgs e)
         {
-            textBoxPrevResult.Text = Convert.ToString(Result());
+            textBoxPrevResult.Text = Result();
             Operand1 = textBoxPrevResult.Text;
             Operand2 = "";
             textBoxResult.Text = textBoxPrevResult.Text;
@@ -170,43 +170,46 @@ namespace _1025_calculator
         {
             Operand1 = "";
             Operand2 = "";
+            Operator = "";
+            OperatorActive = false;
             textBoxResult.Text = "";
             textBoxPrevResult.Text = "";
         }
 
         private string Result()
         {
-            if (Operator == "*")
-            {
+                if (Operator == "*")
+                {
+                Operand1=Operand1.Replace(',', '.');
+                Operand2=Operand2.Replace(',', '.');
                 return Convert.ToString(double.Parse(Operand1, NumberStyles.AllowExponent | NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingSign, CultureInfo.InvariantCulture) * (double.Parse(Operand2, NumberStyles.AllowExponent | NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingSign, CultureInfo.InvariantCulture)));
-            }
-            else if (Operator == "/")
-            {
-                if (Operand2 == "0")
-                {
-                    return "Error";
                 }
-                else
+                else if (Operator == "/")
                 {
+                    if (Operand2 == "0")
+                    {
+                        return "Error";
+                    }
+                    else
+                    {
+                    Operand1 = Operand1.Replace(',', '.');
+                    Operand2 = Operand2.Replace(',', '.');
                     return Convert.ToString(double.Parse(Operand1, NumberStyles.AllowExponent | NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingSign, CultureInfo.InvariantCulture) / (double.Parse(Operand2, NumberStyles.AllowExponent | NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingSign, CultureInfo.InvariantCulture)));
+                    }
                 }
-            }
-            else if (Operator == "+")
-            {
+                else if (Operator == "+")
+                {
+                Operand1 = Operand1.Replace(',', '.');
+                Operand2 = Operand2.Replace(',', '.');
                 return Convert.ToString(double.Parse(Operand1, NumberStyles.AllowExponent | NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingSign, CultureInfo.InvariantCulture) + (double.Parse(Operand2, NumberStyles.AllowExponent | NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingSign, CultureInfo.InvariantCulture)));
-            }
-            else if (Operator == "-")
-            {
+                }
+                else if (Operator == "-")
+                {
+                Operand1 = Operand1.Replace(',', '.');
+                Operand2 = Operand2.Replace(',', '.');
                 return Convert.ToString(double.Parse(Operand1, NumberStyles.AllowExponent | NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingSign, CultureInfo.InvariantCulture) - (double.Parse(Operand2, NumberStyles.AllowExponent | NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingSign, CultureInfo.InvariantCulture)));
-            }
-            else if (Operator == "double2")
-            {
-                return Convert.ToString(double.Parse(Operand2, NumberStyles.AllowExponent | NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingSign, CultureInfo.InvariantCulture) * (double.Parse(Operand2, NumberStyles.AllowExponent | NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingSign, CultureInfo.InvariantCulture)));
-            }
-            else if (Operator == "double1")
-            {
-                return Convert.ToString(double.Parse(Operand1, NumberStyles.AllowExponent | NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingSign, CultureInfo.InvariantCulture) * (double.Parse(Operand1, NumberStyles.AllowExponent | NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingSign, CultureInfo.InvariantCulture)));
-            }
+                }
+            
             return "";
         }
 
@@ -215,45 +218,51 @@ namespace _1025_calculator
 
             if (Operand1 == "")
             {
-                Operand1 += "0.";
-                textBoxResult.Text += "0.";
+                Operand1 += "0,";
+                textBoxResult.Text += "0,";
             }
             else if (Operand2 == "" && Operand1 != "" && (OperatorActive))
             {
-                Operand2 += "0.";
-                textBoxResult.Text += "0.";
+                Operand2 += "0,";
+                textBoxResult.Text += "0,";
             }
             else if (Operand2 != "" && Operand1 != "" && (OperatorActive))
             {
-                Operand2 += ".";
-                textBoxResult.Text += ".";
+                Operand2 += ",";
+                textBoxResult.Text += ",";
             }
             else
             {
-                Operand1 += ".";
-                textBoxResult.Text += ".";
+                Operand1 += ",";
+                textBoxResult.Text += ",";
             }
 
         }
-        private void buttonXmultbyX_Click(object sender, EventArgs e)
+        private void buttonArrow_Click(object sender, EventArgs e)
         {
-            if (Operand2 != "")
+            if (textBoxResult.Text == "")
             {
-                Operator = "double2";
-                OperatorActive = true;
-                textBoxPrevResult.Text = Convert.ToString(Result());
-                Operand1 = textBoxPrevResult.Text;
-                Operand2 = "";
-                textBoxResult.Text = textBoxPrevResult.Text;
+                return;
             }
             else
             {
-                Operator = "double";
-                OperatorActive = true;
-                textBoxPrevResult.Text = Convert.ToString(Result());
-                Operand1 = textBoxPrevResult.Text;
-                Operand2 = "";
-                textBoxResult.Text = textBoxPrevResult.Text;
+                if (OperatorActive)
+                {
+                    if (textBoxResult.Text[textBoxResult.Text.Length - 1] == Operator[0])
+                    {
+                        textBoxResult.Text = textBoxResult.Text.Remove(textBoxResult.Text.Length - 1);
+                    }
+                    else
+                    {
+                        Operand2 = Operand2.Remove(Operand2.Length - 1);
+                        textBoxResult.Text = textBoxResult.Text.Remove(textBoxResult.Text.Length - 1);
+                    }
+                }
+                else
+                {
+                    Operand1 = Operand1.Remove(Operand1.Length - 1);
+                    textBoxResult.Text = textBoxResult.Text.Remove(textBoxResult.Text.Length - 1);
+                }
             }
         }
     }
